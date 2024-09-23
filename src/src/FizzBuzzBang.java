@@ -6,23 +6,35 @@ public class FizzBuzzBang {
 
     }
 
-    public String mainWork(int number){
-        if (number % 3 == 0 && number % 5 == 0 && number % 7 == 0) {
-            return "FizzBuzzBang";
-        } else if (number % 3 == 0 && number % 5 == 0) {
-            return "FizzBuzz";
-        } else if (number % 3 == 0 && number % 7 == 0) {
-            return "FizzBang";
-        } else if (number % 5 == 0 && number % 7 == 0) {
-            return "BuzzBang";
-        } else if (number % 3 == 0) {
-            return "Fizz";
-        } else if (number % 5 == 0) {
-            return "Buzz";
-        } else if (number % 7 == 0) {
-            return "Bang";
+    private boolean uppercase = false;
+
+    public void toggleUppercase() {
+        if (uppercase) {
+            uppercase = false;
         } else {
-            return "Boom";
+            uppercase = true;
         }
+    }
+
+    public String mainWork(int number) {
+        StringBuilder result = new StringBuilder();
+
+        if (number % 3 == 0) {
+            result.append("Fizz");
+        }
+        if (number % 5 == 0) {
+            result.append("Buzz");
+        }
+        if (number % 7 == 0) {
+            result.append("Bang");
+        }
+
+        if (result.isEmpty()) {
+            result.append("Boom");
+        } else if (uppercase) {
+            result = new StringBuilder(result.toString().toUpperCase());
+        }
+
+        return result.toString();
     }
 }
